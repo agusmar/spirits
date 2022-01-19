@@ -1,9 +1,14 @@
-import Card from './components/Card';
+import Drink from './components/Drink';
+import SearchParams from './components/SearchParams';
 
 function App() {
   return (
-    <div>
-      <Card />
+    <div className="flex">
+      <Drink
+        name="Whiskey sour"
+        category="Contemporary drink"
+        alcohol="Whiskey"
+      />
     </div>
   );
 }
