@@ -1,6 +1,6 @@
-import FilterableDrinkContainer from './components/FilterableDrinkContainer';
+import FilterableDrinkContainer from './pages/FilterableDrinkContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Details from './components/Details';
+import Details from './pages/Details';
 
 function App() {
   return (

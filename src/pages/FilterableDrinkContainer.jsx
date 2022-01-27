@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import DrinksList from './DrinksList';
-import SearchParams from './SearchParams';
+import DrinksList from '../components/DrinksList';
+import SearchParams from '../components/SearchParams';
 
 function searchDrinkByName(name) {
   return fetch(
