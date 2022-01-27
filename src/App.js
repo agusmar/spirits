@@ -1,14 +1,20 @@
-import Drink from './components/Drink';
-import SearchParams from './components/SearchParams';
+import FilterableDrinkContainer from './components/FilterableDrinkContainer';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Details from './components/Details';
 
 function App() {
   return (
-    <div className="flex">
-      <Drink
-        name="Whiskey sour"
-        category="Contemporary drink"
-        alcohol="Whiskey"
-      />
+    <div className="flex text-neutral-300 bg-neutral-900">
+      <Router>
+        <Switch>
+          <Route path="/details">
+            <Details />
+          </Route>
+          <Route path="/">
+            <FilterableDrinkContainer />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

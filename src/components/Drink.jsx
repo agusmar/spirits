@@ -1,16 +1,21 @@
-const Drink = (props) => {
+const Drink = ({ drink }) => {
+  if (!drink) {
+    return <h2 className="text-lg font-bold">Loading...</h2>;
+  }
   return (
-    <div className="w-1/4 p-4">
-      <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+    <div className="p-4">
+      <div className="w-full aspect-w-1 aspect-h-1 bg-neutral-800 rounded-lg overflow-hidden xl:aspect-w-5 xl:aspect-h-6">
         <img
-          src="https://www.thecocktaildb.com/images/media/drink/hbkfsh1589574990.jpg"
+          src={drink.strDrinkThumb}
           alt=""
           className="w-full h-full object-center object-cover group-hover:opacity-75"
         />
       </div>
-      <h3 className="mt-4 text-lg font-bold text-gray-900">{props.name}</h3>
-      <h4 className="mt-1  text-md text-gray-700">{props.category}</h4>
-      <p className="mt-1 text-sm text-gray-700">{props.alcohol}</p>
+      <h3 className="mt-4 text-lg font-bold text-neutral-400">
+        {drink.strDrink}
+      </h3>
+      <h4 className="mt-1  text-md text-neutral-500">{drink.strIBA}</h4>
+      <p className="mt-1 text-sm text-neutral-500">{drink.strIngredient1}</p>
     </div>
   );
 };
