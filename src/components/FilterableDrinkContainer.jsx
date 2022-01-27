@@ -8,12 +8,6 @@ function searchDrinkByName(name) {
   );
 }
 
-function getDrinkById(id) {
-  return fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-  );
-}
-
 function listIngredients() {
   return fetch(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`);
 }
@@ -24,7 +18,6 @@ const FilterableDrinkContainer = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [ingredients, setIngredients] = useState([]);
-  const [drink, setDrink] = useState([]);
 
   async function getDrinks() {
     try {

@@ -7,7 +7,7 @@ function App() {
     <div className="flex text-neutral-300 bg-neutral-900">
       <Router>
         <Switch>
-          <Route path="/details">
+          <Route path="/details/:id">
             <Details />
           </Route>
           <Route path="/">
