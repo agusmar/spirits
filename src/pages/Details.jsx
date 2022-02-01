@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Ingredients from '../components/Ingredients';
 
 function getDrinkById(id) {
   return fetch(
@@ -28,6 +29,15 @@ const Details = () => {
     return <p>Cargando</p>;
   }
 
+  const ingredientsAndMeasures = [];
+  for (let i = 1; i <= 15; i++) {
+    const ingredient = drink[`strIngredient${i}`];
+    const measure = drink[`strMeasure${i}`];
+    ingredientsAndMeasures.push({
+      ingredient: ingredient,
+      measure: measure,
+    });
+  }
   return (
     <div>
       <section className="text-neutral-400 overflow-hidden">
@@ -67,46 +77,18 @@ const Details = () => {
                 <h2 className="text-md text-neutral-100 tracking-widest pb-2">
                   Ingredients
                 </h2>
-                {drink.strIngredient1 ? (
-                  <div className="flex border-t border-neutral-800 py-1">
-                    <span className="text-neutral-400">
-                      {drink.strMeasure1}
-                    </span>
-                    <span className="ml-auto text-neutral-500">
-                      {drink.strIngredient1}
-                    </span>
-                  </div>
-                ) : null}
-                {drink.strIngredient2 ? (
-                  <div className="flex border-t border-neutral-800 py-1">
-                    <span className="text-neutral-400">
-                      {drink.strMeasure2}
-                    </span>
-                    <span className="ml-auto text-neutral-500">
-                      {drink.strIngredient2}
-                    </span>
-                  </div>
-                ) : null}
-                {drink.strIngredient3 ? (
-                  <div className="flex border-t border-neutral-800 py-1">
-                    <span className="text-neutral-400">
-                      {drink.strMeasure3}
-                    </span>
-                    <span className="ml-auto text-neutral-500">
-                      {drink.strIngredient3}
-                    </span>
-                  </div>
-                ) : null}
-                {drink.strIngredient4 ? (
-                  <div className="flex border-t border-neutral-800 py-1">
-                    <span className="text-neutral-400">
-                      {drink.strMeasure4}
-                    </span>
-                    <span className="ml-auto text-neutral-500">
-                      {drink.strIngredient4}
-                    </span>
-                  </div>
-                ) : null}
+                {ingredientsAndMeasures.map((ingredientsAndMeasures) =>
+                  ingredientsAndMeasures.ingredient ||
+                  ingredientsAndMeasures.measure ? (
+                    <Ingredients
+                      key={ingredientsAndMeasures.ingredient}
+                      ingredient={ingredientsAndMeasures.ingredient}
+                      measure={ingredientsAndMeasures.measure}
+                    />
+                  ) : (
+                    ''
+                  ),
+                )}
 
                 <div className="pt-4">
                   <span className="text-md text-neutral-100 tracking-widest pb-2 mr-2">
@@ -121,7 +103,7 @@ const Details = () => {
             <img
               alt="drink"
               className="lg:w-1/2 w-full lg:h-auto object-cover object-center rounded"
-              src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg"
+              src={drink.strDrinkThumb}
             />
           </div>
         </div>
