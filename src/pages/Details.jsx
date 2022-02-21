@@ -29,7 +29,7 @@ const Details = () => {
     return <p>Cargando</p>;
   }
 
-  const ingredientsAndMeasures = [];
+  let ingredientsAndMeasures = [];
   for (let i = 1; i <= 15; i++) {
     const ingredient = drink[`strIngredient${i}`];
     const measure = drink[`strMeasure${i}`];
@@ -38,6 +38,11 @@ const Details = () => {
       measure: measure,
     });
   }
+
+  ingredientsAndMeasures = ingredientsAndMeasures.filter(
+    (obj) => obj.ingredient !== null,
+  );
+
   return (
     <div>
       <section className="text-neutral-400 overflow-hidden">
@@ -77,18 +82,13 @@ const Details = () => {
                 <h2 className="text-md text-neutral-100 tracking-widest pb-2">
                   Ingredients
                 </h2>
-                {ingredientsAndMeasures.map((ingredientsAndMeasures) =>
-                  ingredientsAndMeasures.ingredient ||
-                  ingredientsAndMeasures.measure ? (
-                    <Ingredients
-                      key={ingredientsAndMeasures.ingredient}
-                      ingredient={ingredientsAndMeasures.ingredient}
-                      measure={ingredientsAndMeasures.measure}
-                    />
-                  ) : (
-                    ''
-                  ),
-                )}
+                {ingredientsAndMeasures.map((ingredientObject) => (
+                  <Ingredients
+                    key={ingredientObject.ingredient}
+                    ingredient={ingredientObject.ingredient}
+                    measure={ingredientObject.measure ?? 'Up to you'}
+                  />
+                ))}
 
                 <div className="pt-4">
                   <span className="text-md text-neutral-100 tracking-widest pb-2 mr-2">
