@@ -1,6 +1,6 @@
 const SearchParams = ({ getDrink, drinkName, setDrinkName, ingredients }) => {
   return (
-    <div className="p-8 border-r border-neutral-600">
+    <div className="p-8 border-r border-neutral-600 min-h-screen">
       <form
         onSubmit={(event) => {
           event.preventDefault();

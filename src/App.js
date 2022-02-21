@@ -4,7 +4,7 @@ import Details from './pages/Details';
 
 function App() {
   return (
-    <div className="flex text-neutral-300 bg-neutral-900 w-full">
+    <div className="flex text-neutral-300 bg-neutral-900 w-full min-h-screen">
       <Router>
         <Switch>
           <Route path="/details/:id">
