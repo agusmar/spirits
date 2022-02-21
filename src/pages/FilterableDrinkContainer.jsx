@@ -12,12 +12,19 @@ function listIngredients() {
   return fetch(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`);
 }
 
+function searchDrinkByIngredient(ingredient) {
+  return fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`,
+  );
+}
+
 const FilterableDrinkContainer = () => {
   const [drinkName, setDrinkName] = useState('');
   const [drinks, setDrinks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredient, setIngredient] = useState('');
+  const [ingredientList, setIngredientList] = useState([]);
 
   async function getDrinks() {
     try {
@@ -35,11 +42,20 @@ const FilterableDrinkContainer = () => {
     async function requestIngredients() {
       const response = await listIngredients();
       const data = await response.json();
-      setIngredients(data.drinks);
+      setIngredientList(data.drinks);
     }
     getDrinks();
     requestIngredients();
   }, []);
+
+  useEffect(() => {
+    async function requestDrinksByIngredient() {
+      const response = await searchDrinkByIngredient(ingredient);
+      const data = await response.json();
+      setDrinks(data.drinks);
+    }
+    requestDrinksByIngredient();
+  }, [ingredient]);
 
   return (
     <div className="flex h-full">
@@ -47,7 +63,8 @@ const FilterableDrinkContainer = () => {
         drinkName={drinkName}
         setDrinkName={setDrinkName}
         getDrink={getDrinks}
-        ingredients={ingredients}
+        ingredientList={ingredientList}
+        setIngredient={setIngredient}
       />
       <DrinksList loading={loading} error={error} drinks={drinks} />
     </div>

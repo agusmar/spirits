@@ -1,4 +1,11 @@
-const SearchParams = ({ getDrink, drinkName, setDrinkName, ingredients }) => {
+const SearchParams = ({
+  getDrink,
+  drinkName,
+  setDrinkName,
+  ingredient,
+  ingredientList,
+  setIngredient,
+}) => {
   return (
     <div className="p-8 border-r border-neutral-600 min-h-screen">
       <form
@@ -38,10 +45,12 @@ const SearchParams = ({ getDrink, drinkName, setDrinkName, ingredients }) => {
         <select
           name="ingredients"
           id="ingredients-select"
+          value={ingredient}
           className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-neutral-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-neutral-800"
           defaultValue="Ingredientes"
+          onChange={(event) => setIngredient(event.target.value)}
         >
-          {ingredients.map((ingredient) => (
+          {ingredientList.map((ingredient) => (
             <option
               key={ingredient.strIngredient1}
               value={ingredient.strIngredient1}
