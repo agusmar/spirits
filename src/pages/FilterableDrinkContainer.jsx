@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import DrinksList from '../components/DrinksList';
 import SearchParams from '../components/SearchParams';
 
@@ -26,7 +26,7 @@ const FilterableDrinkContainer = () => {
   const [ingredient, setIngredient] = useState('');
   const [ingredientList, setIngredientList] = useState([]);
 
-  async function getDrinks() {
+  const getDrinks = useCallback(async () => {
     try {
       setLoading(true);
       const response = await searchDrinkByName(drinkName);
@@ -36,7 +36,7 @@ const FilterableDrinkContainer = () => {
       setError(error);
     }
     setLoading(false);
-  }
+  }, [drinkName]);
 
   useEffect(() => {
     async function requestIngredients() {
@@ -46,7 +46,7 @@ const FilterableDrinkContainer = () => {
     }
     getDrinks();
     requestIngredients();
-  }, []);
+  }, [getDrinks]);
 
   useEffect(() => {
     async function requestDrinksByIngredient() {

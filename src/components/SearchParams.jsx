@@ -8,12 +8,7 @@ const SearchParams = ({
 }) => {
   return (
     <div className="p-8 border-r border-neutral-600 min-h-screen">
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          getDrink();
-        }}
-      >
+      <form>
         <label
           htmlFor="search"
           className="block text-sm font-medium text-neutral-300"
@@ -28,13 +23,6 @@ const SearchParams = ({
             className="bg-neutral-800 mb-4 shadow-sm focus:ring-indigo-500 focus:border-indigo-300 block w-full pr-12 sm:text-sm border-neutral-700 rounded-md"
           />
         </div>
-
-        <button
-          type="submit"
-          className="text-neutral-100 inline-flex items-center px-3 py-2 border border-neutral-800 shadow-sm text-sm leading-4 font-medium rounded-md text-neutral-200 bg-neutral-600 hover:bg-neutral-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500"
-        >
-          Buscar
-        </button>
 
         <label
           for="ingredients-select"
