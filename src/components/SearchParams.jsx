@@ -1,5 +1,4 @@
 const SearchParams = ({
-  getDrink,
   drinkName,
   setDrinkName,
   ingredient,
