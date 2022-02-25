@@ -18,7 +18,6 @@ const Details = () => {
       setLoading(true);
       const response = await getDrinkById(id);
       const data = await response.json();
-      console.log(data);
       setDrink(data.drinks[0]);
       setLoading(false);
     }
