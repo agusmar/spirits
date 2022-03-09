@@ -25,7 +25,7 @@ const SearchParams = ({
         </div>
 
         <label
-          for="ingredients-select"
+          htmlFor="ingredients-select"
           className="mt-8 block text-sm font-medium text-neutral-300"
         >
           Filtrar por ingrediente
